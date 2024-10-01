@@ -11,20 +11,16 @@ public class day23 {
         Deque<Integer> deque = new ArrayDeque<>();
         
         for (int i = 0; i < n; i++) {
-            // Remove elements that are out of this window
             if (!deque.isEmpty() && deque.peekFirst() < i - k + 1) {
                 deque.pollFirst();
-            }
-
-           
+            }  
             while (!deque.isEmpty() && arr[deque.peekLast()] < arr[i]) {
                 deque.pollLast();
             }
 
            
             deque.offerLast(i);
-
-            
+  
             if (i >= k - 1) {
                 result[i - k + 1] = arr[deque.peekFirst()];
             }
